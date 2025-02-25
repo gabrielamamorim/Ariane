@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário @AriKedma123</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #B93D3D, #D63A3A);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            color: blue;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .message-before {
+            font-size: 1.2em;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #C0392B;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #922B21;
+        }
+        .balloon {
+            position: absolute;
+            font-size: 40px;
+            animation: float 10s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100vh);
+            }
+        }
+        #customImage {
+            display: none;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="arianeMessage" class="message-before" style="display: none;">
+            Gab wishes you a happy 25 February
+        </div>
+        <h1 id="message" style="display: block;">🎉🕷️ Feliz dia 25 de Fevereiro Ariane 🕷️🎉</h1>
+        <button id="surpriseButton" onclick="showMessage()" style="display: block;">Obrigada Gab</button>
+    </div>
+
+    <div id="customImage" style="display: none;">
+        <img src="imagens/pacoca-caseira.jpg" alt="andrewkkkkk" width="300">
+    </div>
+
+    <script>
+        let balloonCount = 0;
+        const maxBalloons = 50;
+
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('surpriseButton').style.display = 'none';
+            document.getElementById('arianeMessage').style.display = 'block';
+            startBalloonFlow();
+            document.getElementById('customImage').style.display = 'block';
+        }
+
+        function createBalloon() {
+            if (balloonCount >= maxBalloons) return;
+            balloonCount++;
+
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.textContent = '🕷️';
+            balloon.style.left = `${Math.random() * 100}vw`;
+            balloon.style.animationDuration = `${Math.random() * 3 + 7}s`;
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+                balloonCount--;
+            }, 10000);
+        }
+
+        function startBalloonFlow() {
+            setInterval(createBalloon, 300);
+        }
+    </script>
+</body>
+</html>
